@@ -1,0 +1,29 @@
+<html>
+<body>
+<form action="/add-todo" method="post">
+    <input type="text" placeholder="ToDo" name="toDoName"/>
+    <!--<select name="gameGenre">
+        <option selected disabled>Genre</option>
+        <option value="adventure">Adventure</option>
+        <option value="rpg">RPG</option>
+        <option value="strategy">Strategy</option>
+        <option value="shooter">Shooter</option>
+    </select>-->
+  <!--  <select name="gamePlatform">
+        <option selected disabled>Platform</option>
+        <option value="pc">PC</option>
+        <option value="ps4">PS4</option>
+        <option value="xbone">XBox One</option>
+        <option value="wiiu">Wii U</option>
+    </select>-->
+    <input type="number" placeholder="Release Year" name="gameYear"/>
+    <button type="submit">Add Game</button>
+</form>
+
+<ol>
+    {{#todos}}
+    <li>{{text}} {{is_done}}</li>
+    {{/todos}}
+</ol>
+</body>
+</html>

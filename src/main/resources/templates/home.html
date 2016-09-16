@@ -1,29 +1,58 @@
 <html>
 <body>
+{{^user}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Username" name="userName" required/>
+    <input type="password" placeholder="Password" name="password" required/>
+    <button type="submit">Login</button>
+</form>
+{{/user}}
+
+{{#user}}
+Welcome, {{name}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+<br><br>
+<!--<a href="/">All</a>
+<a href="/?genre=adventure">Adventure</a>
+<a href="/?genre=rpg">RPG</a>
+<a href="/?genre=strategy">Strategy</a>
+<a href="/?genre=shooter">Shooter</a>
+
+<br/><br/>-->
+
+<form action="/searchByToDo" method="get">
+    <input type="text" placeholder="Search" name="search"/>
+    <button type="submit">Search</button>
+</form>
+
+<br/><br/>
+
+<!--<form action="/" method="get">
+    <input type="text" placeholder="Search" name="search"/>
+    <button type="submit">Search</button>
+</form>
+
+<br/><br/>-->
+
 <form action="/add-todo" method="post">
     <input type="text" placeholder="ToDo" name="toDoName"/>
-    <!--<select name="gameGenre">
-        <option selected disabled>Genre</option>
-        <option value="adventure">Adventure</option>
-        <option value="rpg">RPG</option>
-        <option value="strategy">Strategy</option>
-        <option value="shooter">Shooter</option>
+    <!--  ADD A LEVEL OF IMPORTANCE OR TIME FRAME TO GET DONE
+    <select name="todoIs_done">
+        <option selected disabled>not_done</option>
+        <option value="is_not_done">Not Done</option>
+        <option value="is_done">Done</option>
     </select>-->
-  <!--  <select name="gamePlatform">
-        <option selected disabled>Platform</option>
-        <option value="pc">PC</option>
-        <option value="ps4">PS4</option>
-        <option value="xbone">XBox One</option>
-        <option value="wiiu">Wii U</option>
-    </select>-->
-    <input type="number" placeholder="Release Year" name="gameYear"/>
-    <button type="submit">Add Game</button>
+    <button type="submit">Add Item</button>
 </form>
 
 <ol>
     {{#todos}}
-    <li>{{text}} {{is_done}}</li>
+    <li>{{text}} {{is_done}} <a href="/delete?todoID={{id}}">delete</a></li>
     {{/todos}}
 </ol>
+
+{{/user}}
 </body>
 </html>

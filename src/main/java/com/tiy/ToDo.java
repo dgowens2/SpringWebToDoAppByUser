@@ -15,14 +15,18 @@ public class ToDo {
     @Column(nullable = false)
     String text;
 
-    @Column(nullable = false)
+    @Column(nullable = false) //do we add this since false is a boolean condition?
     boolean is_done;
+
+    @ManyToOne
+    User user;
 
     public ToDo() {
     }
 
-    public ToDo(String text, boolean is_done) {
+    public ToDo(String text, boolean not_done, User user) {
         this.text = text;
-        this.is_done = false;
+        this.is_done = not_done;
+        this.user = user;
     }
 }
